@@ -65,11 +65,11 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "QWERTY";
+            display-name = "NGRMMR";
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                               &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp SPACE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
+&kp TAB    &kp B  &kp Y  &kp O     &kp U  &kp SQT                               &kp UP                 &kp SEMI     &kp L  &kp D      &kp W    &kp V  &kp Z
+&td0       &kp C  &kp I  &kp E     &kp A  &kp COMMA                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp DOT      &kp H  &kp T      &kp S    &kp N  &kp Q
+&kp LCTRL  &kp G  &kp X  &kp J     &kp K  &kp MINUS        &kp SPACE              &kp DOWN             &kp FSLH     &kp R  &kp M      &kp F    &kp P  &kp ESC
                          &kp LGUI  &mo 1  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
             >;
 
