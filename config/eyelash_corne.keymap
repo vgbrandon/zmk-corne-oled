@@ -36,6 +36,27 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+        // 1 tap = nada, 2 taps = toggle GAME (layer 4)
+        td_game: td_game {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Tap: none / Double-tap: GAME";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&none>, <&tog 4>;
+        };
+
+        // Tap ejecuta el tap-dance de arriba; Hold mantiene NUMBER (layer 1)
+        ht_game: ht_game {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Hold: NUMBER / TapDance: GAME";
+            #binding-cells = <0>;
+
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+
+            bindings = <&td_game>, <&mo 1>;
+        };
     };
 
     rgb_encoder: rgb_encoder {
@@ -70,7 +91,7 @@
 &kp TAB    &kp B  &kp Y  &kp O     &kp U  &kp SQT                               &kp UP                 &kp SEMI     &kp L  &kp D      &kp W    &kp V  &kp Z
 &td0       &kp C  &kp I  &kp E     &kp A  &kp COMMA                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp DOT      &kp H  &kp T      &kp S    &kp N  &kp Q
 &kp LCTRL  &kp G  &kp X  &kp J     &kp K  &kp MINUS        &kp SPACE              &kp DOWN             &kp FSLH     &kp R  &kp M      &kp F    &kp P  &kp ESC
-                         &kp LGUI  &mo 1  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
+                         &kp LGUI  &ht_game  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -111,5 +132,17 @@
 
             sensor-bindings = <&scroll_encoder>;
         };
+                game_layer {
+            display-name = "GAME(QWERTY)";
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                                 &kp Y                  &kp U       &kp I      &kp O    &kp P    &kp LBKT &kp RBKT
+&kp LSHIFT   &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT   &kp ENTER  &kp RIGHT   &kp H       &kp J       &kp K    &kp L    &kp SQT  &kp BSPC
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B           &kp SPACE              &kp DOWN              &kp N       &kp M       &kp COMMA &kp DOT  &kp FSLH  &kp ESC
+                         &kp LGUI  &mo 1  &kp SPACE                                               &kp ENTER    &mo 2  &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
     };
 };
