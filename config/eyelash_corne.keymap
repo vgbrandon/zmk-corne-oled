@@ -36,7 +36,6 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
-        // 1 tap = nada, 2 taps = toggle GAME (layer 4)
         td_game: td_game {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Tap: none / Double-tap: GAME";
@@ -45,7 +44,6 @@
             bindings = <&none>, <&tog 4>;
         };
 
-        // Tap ejecuta el tap-dance de arriba; Hold mantiene NUMBER (layer 1)
         ht_game: ht_game {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Hold: NUMBER / TapDance: GAME";
@@ -55,8 +53,10 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
 
-            bindings = <&td_game>, <&mo 1>;
+            // ✅ AQUÍ EL FIX: un solo grupo y SIN coma
+            bindings = <&td_game &mo 1>;
         };
+
     };
 
     rgb_encoder: rgb_encoder {
