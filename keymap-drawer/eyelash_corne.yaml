@@ -44,7 +44,7 @@ layers:
   - P
   - $$mdi:keyboard-esc$$
   - LGUI
-  - {t: '&td_game', h: NUMBER}
+  - {t: '&td_game_in', h: NUMBER}
   - {t: '$$mdi:keyboard-space$$', h: Fn}
   - {t: '$$mdi:keyboard-return$$', h: Fn}
   - SYMBOL
@@ -240,7 +240,7 @@ layers:
   - {t: /, s: '?'}
   - $$mdi:keyboard-esc$$
   - LGUI
-  - NUMBER
+  - {t: '&td_game_out', h: NUMBER}
   - $$mdi:keyboard-space$$
   - {t: '$$mdi:keyboard-return$$', type: enter}
   - SYMBOL
