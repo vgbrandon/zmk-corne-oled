@@ -36,27 +36,27 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
         td_game: td_game {
             compatible = "zmk,behavior-tap-dance";
-            display-name = "Tap: none / Double-tap: GAME";
+            display-name = "Tap: trans / Double-tap: GAME";
             #binding-cells = <0>;
             tapping-term-ms = <250>;
-            bindings = <&none>, <&tog 4>;
+            bindings = <&trans>, <&tog 4>;
         };
 
         ht_game: ht_game {
             compatible = "zmk,behavior-hold-tap";
             display-name = "Hold: NUMBER / TapDance: GAME";
-            #binding-cells = <0>;
-
+            #binding-cells = <2>;
+        
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-
-            // ✅ AQUÍ EL FIX: un solo grupo y SIN coma
-            bindings = <&td_game &mo 1>;
+        
+            /* IMPORTANTE: solo phandles, sin parámetros */
+            bindings = <&mo &td_game>;
         };
-
     };
 
     rgb_encoder: rgb_encoder {
@@ -91,7 +91,7 @@
 &kp TAB    &kp B  &kp Y  &kp O     &kp U  &kp SQT                               &kp UP                 &kp SEMI     &kp L  &kp D      &kp W    &kp V  &kp Z
 &td0       &kp C  &kp I  &kp E     &kp A  &kp COMMA                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp DOT      &kp H  &kp T      &kp S    &kp N  &kp Q
 &kp LCTRL  &kp G  &kp X  &kp J     &kp K  &kp MINUS        &kp SPACE              &kp DOWN             &kp FSLH     &kp R  &kp M      &kp F    &kp P  &kp ESC
-                         &kp LGUI  &ht_game  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
+                         &kp LGUI  &ht_game 1 0  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
