@@ -36,27 +36,42 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
-
-        td_game: td_game {
+                td_game_in: td_game_in {
             compatible = "zmk,behavior-tap-dance";
-            display-name = "Tap: trans / Double-tap: GAME";
+            display-name = "Tap: trans / Double-tap: GO GAME";
             #binding-cells = <0>;
             tapping-term-ms = <250>;
-            bindings = <&trans>, <&tog 4>;
+            bindings = <&trans>, <&to 4>;
         };
 
-        ht_game: ht_game {
+        ht_game_in: ht_game_in {
             compatible = "zmk,behavior-hold-tap";
-            display-name = "Hold: NUMBER / TapDance: GAME";
+            display-name = "Hold: NUMBER / TapDance: GO GAME";
             #binding-cells = <2>;
-        
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-        
-            /* IMPORTANTE: solo phandles, sin parámetros */
-            bindings = <&mo &td_game>;
+            bindings = <&mo &td_game_in>;
         };
+
+        td_game_out: td_game_out {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Tap: trans / Double-tap: GO BASE";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&trans>, <&to 0>;
+        };
+
+        ht_game_out: ht_game_out {
+            compatible = "zmk,behavior-hold-tap";
+            display-name = "Hold: NUMBER / TapDance: GO BASE";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&mo &td_game_out>;
+        };
+
     };
 
     rgb_encoder: rgb_encoder {
@@ -91,7 +106,7 @@
 &kp TAB    &kp B  &kp Y  &kp O     &kp U  &kp SQT                               &kp UP                 &kp SEMI     &kp L  &kp D      &kp W    &kp V  &kp Z
 &td0       &kp C  &kp I  &kp E     &kp A  &kp COMMA                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp DOT      &kp H  &kp T      &kp S    &kp N  &kp Q
 &kp LCTRL  &kp G  &kp X  &kp J     &kp K  &kp MINUS        &kp SPACE              &kp DOWN             &kp FSLH     &kp R  &kp M      &kp F    &kp P  &kp ESC
-                         &kp LGUI  &ht_game 1 0  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
+                         &kp LGUI  &ht_game_in 1 0  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -138,7 +153,7 @@
 &kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                                 &kp Y                  &kp U       &kp I      &kp O    &kp P    &kp LBKT &kp RBKT
 &kp LSHIFT   &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT   &kp ENTER  &kp RIGHT   &kp H       &kp J       &kp K    &kp L    &kp SQT  &kp BSPC
 &kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B           &kp SPACE              &kp DOWN              &kp N       &kp M       &kp COMMA &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE                                               &kp ENTER    &mo 2  &kp RALT
+                         &kp LGUI  &ht_game_out 1 0  &kp SPACE                                               &kp ENTER    &mo 2  &kp RALT
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
